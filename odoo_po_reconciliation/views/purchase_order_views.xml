@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Inherit PO form view - add reconciliation tab -->
+    <record id="view_purchase_order_form_inherit" model="ir.ui.view">
+        <field name="name">purchase.order.form.inherit</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_form"/>
+        <field name="arch" type="xml">
+            <notebook position="inside">
+                <page string="Bill Reconciliation">
+                    <field name="order_line" readonly="1">
+                        <tree decoration-danger="reconciliation_status == 'discrepancy'"
+                              decoration-warning="reconciliation_status == 'no_bill'"
+                              decoration-success="reconciliation_status == 'ok'">
+                            <field name="product_id"/>
+                            <field name="product_qty"/>
+                            <field name="price_unit"/>
+                            <field name="billed_qty"/>
+                            <field name="billed_price"/>
+                            <field name="qty_discrepancy"/>
+                            <field name="amount_discrepancy"/>
+                            <field name="reconciliation_status"/>
+                        </tree>
+                    </field>
+                </page>
+            </notebook>
+        </field>
+    </record>
+</odoo>

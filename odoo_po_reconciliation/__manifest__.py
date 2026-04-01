@@ -5,7 +5,9 @@
     'summary': 'Automated reconciliation of Purchase Orders with supplier bills',
     'depends': ['base', 'purchase', 'account'],
     'data': [
+        'security/ir.model.access.csv',
         'views/res_partner_views.xml',
+        'views/purchase_order_views.xml',
         'report/partner_report.xml',
     ],
     'installable': True,
